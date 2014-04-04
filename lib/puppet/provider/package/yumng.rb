@@ -1,5 +1,8 @@
 require 'puppet/util/package'
 # This is a hack on
+# https://github.com/puppetlabs/puppet/blob/master/lib/puppet/provider/package/yum.rb
+#
+# Inspired by
 # https://github.com/seveas/yum-plugin-puppet/blob/master/lib/puppet/provider/package/yum3.rb
 
 Puppet::Type.type(:package).provide :yumng, :parent => :yum, :source => :rpm do
