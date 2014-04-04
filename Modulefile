@@ -1,0 +1,5 @@
+name 'damianzaremba-yumng'
+version '0.0.1'
+license 'GPL v3'
+summary 'Yum provider that supports proper version locking'
+project_page 'https://github.com/DamianZaremba/yumng'
