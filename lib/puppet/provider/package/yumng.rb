@@ -73,19 +73,19 @@ Puppet::Type.type(:package).provide :yumng, :parent => :yum, :source => :rpm do
     wanted = @resource[:name]
     operation = :install
 
-  case should
-  when true, false, Symbol
-    # No version wanted
-    should = nil
-  else
-    # Add the package version that's wanted
-    wanted += "-#{should}"
-    is = self.query
-    if is && Puppet::Util::Package.versioncmp(should, is[:ensure]) < 0
-      self.debug "Downgrading package #{@resource[:name]} from version #{is[:ensure]} to #{should}"
-      operation = :downgrade
+    case should
+    when true, false, Symbol
+      # No version wanted
+      should = nil
+    else
+      # Add the package version that's wanted
+      wanted += "-#{should}"
+      is = self.query
+      if is && Puppet::Util::Package.versioncmp(should, is[:ensure]) < 0
+        self.debug "Downgrading package #{@resource[:name]} from version #{is[:ensure]} to #{should}"
+        operation = :downgrade
+      end
     end
-  end
 
     # Lock the version we want in yum
     self.lock_version(@resource[:name], should)
