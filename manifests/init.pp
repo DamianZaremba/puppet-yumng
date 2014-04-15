@@ -7,6 +7,3 @@ class yumng {
             ensure  => latest;
     }
 }
-
-# Ensure we run before anything else
-Class['Yumng'] -> Stage['main']
