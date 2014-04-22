@@ -13,7 +13,10 @@ Usage
 * Put this module in modules/yumng
 * In your site manifest or base class include the following
 
-  include yumng
+  class {
+    'yumng':
+      stage => 'setup';
+  }
   Package { provider => 'yumng' }
 
 Why?
